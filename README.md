@@ -3,7 +3,7 @@
 All the cool kids are doing it these days.
 
 
-![light(https://github.com/krebera/neumorphic/blob/master/screenshots/lightgif.gif "Light Demo")
+![light](https://github.com/krebera/neumorphic/blob/master/screenshots/lightgif.gif "Light Demo")
 ![dark](https://github.com/krebera/neumorphic/blob/master/screenshots/darkgif.gif "Dark Demo")
 
 I originally wrote a worse version of this library for personal use, discovered Costa's Neumorphic package [over here](https://github.com/costachung/neumorphic) and ended up fusing the two together.
