@@ -65,7 +65,7 @@ extension CGColor {
         return(red: CGFloat(1.0), green: CGFloat(1.0), blue: CGFloat(1.0), alpha: CGFloat(1.0))
     }
     
-    func applyColorDifference(neutral: CGColor, move: CGColor, to color: CGColor) -> CGColor {
+    public func applyColorDifference(neutral: CGColor, move: CGColor, to color: CGColor) -> CGColor {
         let neutralComps = neutral.rgba
         let highlightComps = move.rgba
         let inputComps = color.rgba
@@ -73,12 +73,12 @@ extension CGColor {
         return CGColor(srgbRed: inputComps.red + (highlightComps.red - neutralComps.red), green: inputComps.green + (highlightComps.green - neutralComps.green), blue: inputComps.blue + (highlightComps.blue - neutralComps.blue), alpha: 1.0)
     }
     
-    func value() -> CGFloat{
+    public func value() -> CGFloat{
         let comps = self.rgba
         return max(comps.red, comps.green, comps.blue)
     }
     
-    func highlight() -> CGColor {
+    public func highlight() -> CGColor {
         if(self.value() > 0.5) {
             return applyColorDifference(neutral: CGColor.cgNeutral, move: CGColor.cgHighlight, to: self)
         } else {
@@ -86,7 +86,7 @@ extension CGColor {
         }
     }
     
-    func shadow() -> CGColor {
+    public func shadow() -> CGColor {
         if(self.value() > 0.8) {
             return applyColorDifference(neutral: CGColor.cgNeutral, move: CGColor.cgShadow, to: self)
         } else {
@@ -94,7 +94,7 @@ extension CGColor {
         }
     }
     
-    func alternate() -> CGColor {
+    public func alternate() -> CGColor {
         if(self.value() > 0.8) {
             return applyColorDifference(neutral: CGColor.cgNeutral, move: CGColor.cgAlternate, to: self)
         } else {
@@ -103,7 +103,7 @@ extension CGColor {
     }
     
     //Val between -1 and 1
-    func interpolate(val : Double, other : CGColor) -> CGColor {
+    public func interpolate(val : Double, other : CGColor) -> CGColor {
         //Backwards linear interpolation
         let otherComps = other.rgba
        
