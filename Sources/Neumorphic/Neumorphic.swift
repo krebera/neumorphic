@@ -132,19 +132,19 @@ public struct Neumorphic<S: Shape>: ViewModifier {
         return GeometryReader { geo in
             ZStack {
                 ZStack {
-                    self.shape.stroke(self.shadowColor.opacity(self.insetShadowOpacity), lineWidth: CGFloat(self.insetWidth * 1.5))
+                    self.shape.stroke(self.innerShadowColor.opacity(self.insetShadowOpacity), lineWidth: CGFloat(self.insetWidth * 1.5))
                     }.blur(radius: 10).offset(x: CGFloat(self.insetDepth), y: CGFloat(self.insetDepth)).mask(self.shape.fill(LinearGradient(Color.black, Color.clear)))
                 ZStack {
-                     self.shape.stroke(self.highlightColor.opacity(self.insetHighlightOpacity), lineWidth: CGFloat(self.insetWidth * 2))
+                     self.shape.stroke(self.innerHighlightColor.opacity(self.insetHighlightOpacity), lineWidth: CGFloat(self.insetWidth * 2))
                 }.blur(radius: 10).offset(x: -CGFloat(self.insetDepth), y: -CGFloat(self.insetDepth)).mask(self.shape.fill(LinearGradient(Color.clear, Color.black)))
-            }.mask(self.shape)
+            }
         }
     }
     
     private func backingShadow(_ content: Neumorphic.Content) -> some View {
         return GeometryReader { geo in
             Group {
-                self.shape.fill(Color(cgColor: self.innerColor))
+                self.shape.fill(self.innerNeutralColor)
                 .shadow(color: self.shadowColor.opacity(self.shadowOpacity), radius: CGFloat(self.shadowRadius), x: CGFloat(self.shadowOffset), y: CGFloat(self.shadowOffset))
                 .shadow(color: self.highlightColor.opacity(self.highlightOpacity), radius: CGFloat(self.highlightRadius), x: CGFloat(self.highlightOffset), y: CGFloat(self.highlightOffset))
             }
