@@ -1,4 +1,4 @@
-# Neumorphic
+# Neumorphic Design in Swift UI
 
 All the cool kids are doing it these days.
 
@@ -72,5 +72,14 @@ Text("Hello, World!")
 .foregroundColor(Color.nAlternate)
 .fontWeight(.bold)
 .neumorphic(RoundedRectangle(cornerRadius: 15), height: 1.0)
-.frame(width: 200, height: 150)```
+.frame(width: 200, height: 150)
+```
+![hw1](https://github.com/krebera/neumorphic/blob/master/screenshots/hw2.png "Elevated")
+![hw2](https://github.com/krebera/neumorphic/blob/master/screenshots/hw1.png "Depressed")
 
+You can add your own custom colors as well.
+If you'd like to override all colors, typically in the case of merging with a background color that isn't the default, you can pass a `CGColor` as a `color` argument. If you'd like to set JUST the inside color without affecting the outer shadowing, you can use `innerColor`.
+
+**TODO: INSERT EXAMPLE OF THIS**
+
+Do button. Cover other available args like size
