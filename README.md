@@ -51,8 +51,10 @@ ContentView()
 
 You can also specify any color you'd like using `bg()` (takes a CGColor):
 ```swift
-let mycolor = ContentView()
-.bg(color: colorForHex(rgb: 0xFF0000))
+//red background
+let mycolor = colorForHex(rgb: 0xFF0000)
+ContentView()
+.bg(color: mycolor)
 .edgesIgnoringSafeArea(.all)
 ```
 
