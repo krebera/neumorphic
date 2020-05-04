@@ -74,12 +74,50 @@ Text("Hello, World!")
 .neumorphic(RoundedRectangle(cornerRadius: 15), height: 1.0)
 .frame(width: 200, height: 150)
 ```
-![hw1](https://github.com/krebera/neumorphic/blob/master/screenshots/hw2.png "Elevated")
-![hw2](https://github.com/krebera/neumorphic/blob/master/screenshots/hw1.png "Depressed")
+
+Depressed             |  Elevated
+:-------------------------:|:-------------------------:
+![hw2](https://github.com/krebera/neumorphic/blob/master/screenshots/hw1.png "Depressed")  |  ![hw1](https://github.com/krebera/neumorphic/blob/master/screenshots/hw2.png "Elevated")
 
 You can add your own custom colors as well.
 If you'd like to override all colors, typically in the case of merging with a background color that isn't the default, you can pass a `CGColor` as a `color` argument. If you'd like to set JUST the inside color without affecting the outer shadowing, you can use `innerColor`.
 
-**TODO: INSERT EXAMPLE OF THIS**
+```swift
+import SwiftUI
+import Neumorphic
 
-Do button. Cover other available args like size
+let kermit = colorForHex(rgb: 0x89CE94)
+let darkGreen = colorForHex(rgb: 0x183A37)
+
+struct ContentView: View {
+    var body: some View {
+        Text("Hi there!").foregroundColor(Color(cgColor: kermit.alternate())).fontWeight(.bold).neumorphic(Circle(), height: -1.0, color: darkGreen, innerColor: kermit).frame(width: 200, height: 150)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().bg(color: darkGreen).edgesIgnoringSafeArea(.all)
+    }
+}
+```
+
+![multi](https://github.com/krebera/neumorphic/blob/master/screenshots/multi.png "Multi")
+
+### Buttons, too!
+Make em squishy!
+
+```swift
+Button(action:{}, label: {
+            Text("Hello")
+            }).neumorphicButtonStyle(Circle())
+    }
+```
+
+Buttons can also take a normal color and inner color argument.
+
+### Size
+
+There's a default spread multiplier that can help ring in the radiuses and blurs of the shadows / highlights if you'd like. You can specify a `size` parameter of the type `.small`, `.medium`, `.large`. The deafult is `.medium`
+
+Please enjoy and squish away!
